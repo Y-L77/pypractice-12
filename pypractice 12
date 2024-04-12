@@ -1,0 +1,16 @@
+import requests
+
+def get_ip_info(ip_address):
+    res = requests.get(f'https://ipinfo.io/{ip_address}')
+    data = res.json()
+    return data
+
+while True:
+    ip_address = input("enter ip: ")
+    if ip_address.lower() == "exit":
+        break 
+    else:
+        ip_info = get_ip_info(ip_address)
+        print("IP Information:")
+        for key, value in ip_info.items():
+            print(f"{key}: {value}")
